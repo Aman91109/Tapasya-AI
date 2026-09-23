@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "schoolLogo": "https://ui-avatars.com/api/?name=DPS&background=0A1349&color=fff&size=80&bold=true",
+    "schoolName": "Delhi Public School, Noida",
+    "location": "Noida, Uttar Pradesh",
+    "mouSignedDate": "2024-10-01",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "schoolLogo": "https://ui-avatars.com/api/?name=RIS&background=5B28C6&color=fff&size=80&bold=true",
+    "schoolName": "Ryan International School",
+    "location": "Gurgaon, Haryana",
+    "mouSignedDate": "2024-11-15",
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "schoolLogo": "https://ui-avatars.com/api/?name=SMC&background=0A1349&color=fff&size=80&bold=true",
+    "schoolName": "St. Mary's Convent School",
+    "location": "Lucknow, Uttar Pradesh",
+    "mouSignedDate": "2024-12-20",
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "schoolLogo": "https://ui-avatars.com/api/?name=AIS&background=5B28C6&color=fff&size=80&bold=true",
+    "schoolName": "Amity International School",
+    "location": "Noida, Uttar Pradesh",
+    "mouSignedDate": "2025-01-10",
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "schoolLogo": "https://ui-avatars.com/api/?name=LVI&background=0A1349&color=fff&size=80&bold=true",
+    "schoolName": "Lotus Valley International",
+    "location": "Noida, Uttar Pradesh",
+    "mouSignedDate": "2025-02-01",
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "schoolLogo": "https://ui-avatars.com/api/?name=SPS&background=5B28C6&color=fff&size=80&bold=true",
+    "schoolName": "Springdales School",
+    "location": "New Delhi",
+    "mouSignedDate": "2025-03-01",
+    "status": "active"
+  }
+]
