@@ -19,8 +19,8 @@ const contactInfo = [
       </svg>
     ),
     label: 'Phone',
-    value: '+91 98765 43210',
-    href: 'tel:+919876543210',
+    value: '+91 95087 25672',
+    href: 'tel:+919508725672',
   },
   {
     icon: (
@@ -29,36 +29,41 @@ const contactInfo = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     ),
-    label: 'Base',
-    value: 'Noida, Uttar Pradesh, India',
+    label: 'Location',
+    value: 'Patna, Bihar, India',
     href: null,
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    ),
+    label: 'WhatsApp',
+    value: '+91 95087 25672',
+    href: 'https://wa.me/919508725672',
   },
 ]
 
 export default function Contact() {
-  const ref = useRef(null)
+  const ref    = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [form, setForm] = useState({ name: '', school: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading]     = useState(false)
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
-
+  const handleChange  = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    // TODO: Wire to backend / email service
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 1200)
+    setTimeout(() => { setLoading(false); setSubmitted(true) }, 1200)
   }
 
   return (
-    <section id="contact" className="section-padding bg-[#0A1349] relative overflow-hidden" aria-label="Contact">
-      {/* Background glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#5B28C6]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-glow/10 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="section-padding relative overflow-hidden" aria-label="Contact">
+      {/* Blobs */}
+      <div className="blob blob-1 w-[500px] h-[500px] top-[-80px] right-[-120px] opacity-40" />
+      <div className="blob blob-2 w-[400px] h-[400px] bottom-[-80px] left-[-100px] opacity-30" style={{ animationDelay: '-4s' }} />
 
       <div className="container-max relative z-10" ref={ref}>
         {/* Heading */}
@@ -68,55 +73,60 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-purple-glow font-heading font-semibold text-sm uppercase tracking-widest mb-3">
-            Get In Touch
-          </p>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-            Bring AI Education
-            <span className="block bg-gradient-to-r from-purple-light to-purple-glow bg-clip-text text-transparent">
-              to Your School
-            </span>
+          <p className="section-label mb-3">Get In Touch</p>
+          <h2 className="section-heading mb-4">
+            Bring AI Education{' '}
+            <span className="water-gradient-text">to Your School</span>
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto font-body">
+          <p className="text-white/50 max-w-xl mx-auto font-body text-sm sm:text-base">
             Reach out to schedule a free introductory workshop or to learn more about
             our monthly AI skills program. We respond within 24 hours.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 flex flex-col gap-6"
+            className="lg:col-span-2 flex flex-col gap-5"
           >
-            <div className="glossy-card-dark rounded-2xl p-6 flex flex-col gap-5">
-              <h3 className="text-white font-heading font-bold text-lg mb-2">Contact Details</h3>
+            {/* Contact Details Card */}
+            <div className="water-card rounded-2xl p-6 flex flex-col gap-4">
+              <h3 className="text-white font-heading font-bold text-lg mb-1">Contact Details</h3>
               {contactInfo.map((info) => (
                 <div key={info.label} className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-[#5B28C6]/20 rounded-xl flex items-center justify-center text-purple-glow flex-shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'rgba(91,40,198,0.2)',
+                      border: '1px solid rgba(139,92,246,0.2)',
+                      color: '#a78bfa',
+                    }}
+                  >
                     {info.icon}
                   </div>
                   <div>
-                    <p className="text-white/50 text-xs font-body mb-0.5">{info.label}</p>
+                    <p className="text-white/40 text-xs font-body mb-0.5">{info.label}</p>
                     {info.href ? (
-                      <a href={info.href} className="text-white font-body text-sm hover:text-purple-glow transition-colors">
+                      <a href={info.href} className="text-white/85 font-body text-sm hover:text-purple-300 transition-colors" target={info.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-white font-body text-sm">{info.value}</p>
+                      <p className="text-white/85 font-body text-sm">{info.value}</p>
                     )}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="glossy-card-dark rounded-2xl p-6">
-              <p className="text-white/80 font-body text-sm leading-relaxed">
-                <span className="text-purple-glow font-semibold">Prefer a quick call?</span> We're happy to schedule a
-                30-minute discovery call with school management — no sales pressure, just
-                a genuine conversation about your students' future.
+            {/* Quick call card */}
+            <div className="water-card rounded-2xl p-6">
+              <p className="text-white/70 font-body text-sm leading-relaxed">
+                <span className="text-purple-300 font-semibold">Prefer a quick call?</span>{' '}
+                We're happy to schedule a 30-minute discovery call with school management —
+                no sales pressure, just a genuine conversation about your students' future.
               </p>
             </div>
           </motion.div>
@@ -129,96 +139,71 @@ export default function Contact() {
             className="lg:col-span-3"
           >
             {submitted ? (
-              <div className="glossy-card-dark rounded-2xl p-10 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
-                <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-4">
+              <div className="water-card rounded-2xl p-10 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                  style={{ background: 'rgba(16,185,129,0.2)', border: '1px solid rgba(16,185,129,0.3)' }}
+                >
                   <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h3 className="text-white font-heading font-bold text-xl mb-2">Message Received!</h3>
-                <p className="text-white/60 font-body text-sm">
+                <p className="text-white/55 font-body text-sm">
                   Thank you for reaching out. Our team will get back to you within 24 hours.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="glossy-card-dark rounded-2xl p-6 md:p-8 flex flex-col gap-5"
+                className="water-card rounded-2xl p-6 md:p-8 flex flex-col gap-5"
                 aria-label="Partnership inquiry form"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-white/70 text-xs font-body font-medium mb-1.5">
-                      Your Name *
-                    </label>
+                    <label htmlFor="name" className="block text-white/55 text-xs font-body font-medium mb-1.5">Your Name *</label>
                     <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
+                      id="name" name="name" type="text" required
+                      value={form.name} onChange={handleChange}
                       placeholder="Principal / Coordinator name"
-                      className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-purple-glow focus:ring-1 focus:ring-purple-glow transition-colors min-h-[44px]"
+                      className="water-input"
                     />
                   </div>
                   <div>
-                    <label htmlFor="school" className="block text-white/70 text-xs font-body font-medium mb-1.5">
-                      School Name *
-                    </label>
+                    <label htmlFor="school" className="block text-white/55 text-xs font-body font-medium mb-1.5">School Name *</label>
                     <input
-                      id="school"
-                      name="school"
-                      type="text"
-                      required
-                      value={form.school}
-                      onChange={handleChange}
+                      id="school" name="school" type="text" required
+                      value={form.school} onChange={handleChange}
                       placeholder="Name of your school"
-                      className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-purple-glow focus:ring-1 focus:ring-purple-glow transition-colors min-h-[44px]"
+                      className="water-input"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-white/70 text-xs font-body font-medium mb-1.5">
-                      Email Address *
-                    </label>
+                    <label htmlFor="email" className="block text-white/55 text-xs font-body font-medium mb-1.5">Email Address *</label>
                     <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
+                      id="email" name="email" type="email" required
+                      value={form.email} onChange={handleChange}
                       placeholder="your@school.edu"
-                      className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-purple-glow focus:ring-1 focus:ring-purple-glow transition-colors min-h-[44px]"
+                      className="water-input"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-white/70 text-xs font-body font-medium mb-1.5">
-                      Phone Number
-                    </label>
+                    <label htmlFor="phone" className="block text-white/55 text-xs font-body font-medium mb-1.5">Phone Number</label>
                     <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={form.phone}
-                      onChange={handleChange}
+                      id="phone" name="phone" type="tel"
+                      value={form.phone} onChange={handleChange}
                       placeholder="+91 XXXXX XXXXX"
-                      className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-purple-glow focus:ring-1 focus:ring-purple-glow transition-colors min-h-[44px]"
+                      className="water-input"
                     />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-white/70 text-xs font-body font-medium mb-1.5">
-                    Message
-                  </label>
+                  <label htmlFor="message" className="block text-white/55 text-xs font-body font-medium mb-1.5">Message</label>
                   <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your school - grade levels, student count, goals..."
-                    className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-purple-glow focus:ring-1 focus:ring-purple-glow transition-colors resize-none"
+                    id="message" name="message" rows={4}
+                    value={form.message} onChange={handleChange}
+                    placeholder="Tell us about your school — grade levels, student count, goals..."
+                    className="water-input resize-none"
                   />
                 </div>
                 <button
@@ -251,4 +236,3 @@ export default function Contact() {
     </section>
   )
 }
-

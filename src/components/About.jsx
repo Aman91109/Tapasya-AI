@@ -26,10 +26,10 @@ function CountUp({ target, suffix = '', duration = 2000 }) {
 }
 
 const stats = [
-  { value: 6, suffix: '+', label: 'Schools Partnered' },
+  { value: 6,   suffix: '+', label: 'Schools Partnered' },
   { value: 500, suffix: '+', label: 'Students Trained' },
-  { value: 48, suffix: '+', label: 'Sessions Conducted' },
-  { value: 97, suffix: '%', label: 'Satisfaction Rate' },
+  { value: 48,  suffix: '+', label: 'Sessions Conducted' },
+  { value: 97,  suffix: '%', label: 'Satisfaction Rate' },
 ]
 
 const pillars = [
@@ -40,8 +40,8 @@ const pillars = [
       </svg>
     ),
     title: 'Our Mission',
-    description:
-      'To make practical AI education accessible to every school student in India — not as an elective, but as a foundational life skill that unlocks opportunity in the careers of tomorrow.',
+    description: 'To make practical AI education accessible to every school student in India — not as an elective, but as a foundational life skill that unlocks opportunity in the careers of tomorrow.',
+    accent: 'from-purple-glow to-purple-light',
   },
   {
     icon: (
@@ -50,8 +50,8 @@ const pillars = [
       </svg>
     ),
     title: 'What We Teach',
-    description:
-      'From machine learning fundamentals and computer vision to AI ethics and real-world project building — our curriculum is hands-on, age-appropriate, and aligned with industry relevance.',
+    description: 'From machine learning fundamentals and computer vision to AI ethics and real-world project building — our curriculum is hands-on, age-appropriate, and aligned with industry relevance.',
+    accent: 'from-cyan-water to-cyan-light',
   },
   {
     icon: (
@@ -60,8 +60,8 @@ const pillars = [
       </svg>
     ),
     title: 'Our Approach',
-    description:
-      'We partner with schools through a formal MOU — starting with a zero-cost introductory day to build trust, then transitioning into a structured monthly program that teachers and principals stand behind.',
+    description: 'We partner with schools through a formal MOU — starting with a zero-cost introductory day to build trust, then transitioning into a structured monthly program that teachers and principals stand behind.',
+    accent: 'from-indigo-400 to-purple-glow',
   },
 ]
 
@@ -71,7 +71,7 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden:  { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
@@ -80,8 +80,12 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="about" className="section-padding bg-gray-50" aria-label="About Tapasya AI">
-      <div className="container-max">
+    <section id="about" className="section-padding relative overflow-hidden" aria-label="About Tapasya AI">
+      {/* Decorative blobs */}
+      <div className="blob blob-2 w-[500px] h-[500px] top-0 left-[-150px] opacity-40" />
+      <div className="blob blob-1 w-[400px] h-[400px] bottom-0 right-[-100px] opacity-30" style={{ animationDelay: '-4s' }} />
+
+      <div className="container-max relative z-10">
         {/* Heading */}
         <motion.div
           ref={ref}
@@ -90,17 +94,14 @@ export default function About() {
           animate={inView ? 'visible' : 'hidden'}
           className="text-center mb-16"
         >
-          <motion.p
-            variants={itemVariants}
-            className="text-[#5B28C6] font-heading font-semibold text-sm uppercase tracking-widest mb-3"
-          >
+          <motion.p variants={itemVariants} className="section-label mb-3">
             Who We Are
           </motion.p>
           <motion.h2 variants={itemVariants} className="section-heading mb-4">
-            Shaping India's AI-Ready
-            <span className="block purple-gradient-text">Generation</span>
+            Shaping India's{' '}
+            <span className="water-gradient-text">AI-Ready Generation</span>
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-gray-600 max-w-2xl mx-auto text-lg font-body leading-relaxed">
+          <motion.p variants={itemVariants} className="text-white/55 max-w-2xl mx-auto text-base sm:text-lg font-body leading-relaxed">
             Tapasya AI was founded on a simple belief: that AI literacy should begin
             in school, not after college. We partner directly with school management
             to bring rigorous, practical AI education to students aged 14–18.
@@ -112,32 +113,35 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
         >
           {pillars.map((pillar) => (
             <motion.div
               key={pillar.title}
               variants={itemVariants}
-              className="glossy-card rounded-2xl p-8 hover:border-[#5B28C6]/30 group"
+              className="water-card rounded-2xl p-7 group"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-navy to-purple rounded-xl flex items-center justify-center text-white mb-5 group-hover:scale-105 transition-transform duration-300">
+              <div
+                className={`w-14 h-14 bg-gradient-to-br ${pillar.accent} rounded-2xl flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                style={{ boxShadow: '0 8px 20px rgba(91,40,198,0.3)' }}
+              >
                 {pillar.icon}
               </div>
-              <h3 className="text-xl font-heading font-bold text-[#0A1349] mb-3">{pillar.title}</h3>
-              <p className="text-gray-600 font-body leading-relaxed text-sm">{pillar.description}</p>
+              <h3 className="text-xl font-heading font-bold text-white mb-3">{pillar.title}</h3>
+              <p className="text-white/55 font-body leading-relaxed text-sm">{pillar.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Stats */}
-        <div className="bg-gradient-to-r from-navy to-purple-dark rounded-3xl p-8 md:p-12 glossy-stats">
+        {/* Stats Bar */}
+        <div className="glossy-stats rounded-3xl p-8 md:p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-4xl md:text-5xl font-heading font-bold text-white mb-2">
                   <CountUp target={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-white/60 font-body text-sm">{stat.label}</div>
+                <div className="text-white/55 font-body text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -146,4 +150,3 @@ export default function About() {
     </section>
   )
 }
-

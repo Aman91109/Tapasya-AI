@@ -10,7 +10,7 @@ function NeuralCanvas() {
     const ctx = canvas.getContext('2d')
     let animId
     let nodes = []
-    const NODE_COUNT = 50
+    const NODE_COUNT = 55
 
     const resize = () => {
       canvas.width = canvas.offsetWidth
@@ -30,31 +30,29 @@ function NeuralCanvas() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw nodes
       nodes.forEach((n) => {
         n.x += n.vx
         n.y += n.vy
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1
+        if (n.x < 0 || n.x > canvas.width)  n.vx *= -1
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1
 
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(139, 92, 246, 0.6)'
+        ctx.fillStyle = 'rgba(139, 92, 246, 0.55)'
         ctx.fill()
       })
 
-      // Draw edges between close nodes
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x
           const dy = nodes[i].y - nodes[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.25
+          if (dist < 140) {
+            const alpha = (1 - dist / 140) * 0.22
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.strokeStyle = `rgba(91, 40, 198, ${alpha})`
+            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`
             ctx.lineWidth = 0.8
             ctx.stroke()
           }
@@ -79,28 +77,29 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  hidden:   { opacity: 0, y: 40 },
+  visible:  { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 }
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A1349]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy-DEFAULT to-[#1a0a3e]" />
+      {/* Deep background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#060C30] via-[#0A1349] to-[#0d1060]" />
 
-      {/* Neural network animation */}
+      {/* Watermorphism blobs */}
+      <div className="blob blob-1 w-[600px] h-[600px] top-[-100px] right-[-100px] opacity-70" />
+      <div className="blob blob-2 w-[400px] h-[400px] bottom-[-50px] left-[-80px] opacity-60" style={{ animationDelay: '-3s' }} />
+      <div className="blob blob-3 w-[300px] h-[300px] top-1/2 left-1/3 opacity-40" style={{ animationDelay: '-5s' }} />
+
+      {/* Neural Canvas */}
       <div className="absolute inset-0">
         <NeuralCanvas />
       </div>
-
-      {/* Glow orbs */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#5B28C6]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-purple-glow/15 rounded-full blur-2xl pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 container-max text-center px-4 sm:px-6 lg:px-8 py-32">
@@ -112,7 +111,16 @@ export default function Hero() {
         >
           {/* Badge */}
           <motion.div variants={itemVariants} className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full backdrop-blur-sm">
+            <span
+              className="inline-flex items-center gap-2 text-white/90 text-sm font-medium px-5 py-2 rounded-full"
+              style={{
+                background: 'rgba(91,40,198,0.2)',
+                border: '1px solid rgba(139,92,246,0.3)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                boxShadow: '0 0 20px rgba(91,40,198,0.15)',
+              }}
+            >
               <span className="w-2 h-2 bg-purple-glow rounded-full animate-pulse" />
               AI Education for the Next Generation
             </span>
@@ -124,7 +132,7 @@ export default function Hero() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight"
           >
             Preparing Students for an{' '}
-            <span className="bg-gradient-to-r from-purple-light via-purple-glow to-indigo-300 bg-clip-text text-transparent">
+            <span className="water-gradient-text">
               AI-Powered Future
             </span>
           </motion.h1>
@@ -132,7 +140,7 @@ export default function Hero() {
           {/* Subheadline */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed font-body"
+            className="text-base sm:text-lg md:text-xl text-white/65 mb-10 max-w-2xl mx-auto leading-relaxed font-body"
           >
             Tapasya AI brings practical, credible AI education directly to schools —
             starting with a free one-day workshop and growing into a transformative
@@ -169,15 +177,15 @@ export default function Hero() {
           {/* Scroll indicator */}
           <motion.div
             variants={itemVariants}
-            className="mt-20 flex flex-col items-center gap-2 opacity-60"
+            className="mt-20 flex flex-col items-center gap-2 opacity-50"
           >
             <span className="text-white/60 text-xs font-body uppercase tracking-widest">Scroll to explore</span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="w-5 h-8 border-2 border-white/30 rounded-full flex items-start justify-center pt-1"
+              className="w-5 h-8 border-2 border-white/25 rounded-full flex items-start justify-center pt-1"
             >
-              <div className="w-1 h-2 bg-white/60 rounded-full" />
+              <div className="w-1 h-2 bg-white/50 rounded-full" />
             </motion.div>
           </motion.div>
         </motion.div>
