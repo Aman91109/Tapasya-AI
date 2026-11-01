@@ -1,58 +1,37 @@
 [
   {
     "id": 1,
-    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
-    "schoolName": "Delhi Public School, Noida",
-    "date": "2024-11-15",
-    "caption": "Students exploring machine learning concepts using hands-on activities during our introductory AI workshop."
+    "image": "/gallery/session-1.jpg",
+    "schoolName": "NIELIT Muzaffarpur, Daudpur",
+    "date": "2026-09-01",
+    "caption": "Foundations of Python — Interactive teaching session on Python programming fundamentals with students."
   },
   {
     "id": 2,
-    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
-    "schoolName": "Ryan International School, Gurgaon",
-    "date": "2024-12-03",
-    "caption": "Young learners building their first AI image classifier — a highlight of Session 2 in the monthly program."
+    "image": "/gallery/session-2.jpg",
+    "schoolName": "NIELIT Muzaffarpur, Daudpur",
+    "date": "2026-09-01",
+    "caption": "Foundations of Python — Wide-angle view of the packed classroom during the Python workshop."
   },
   {
     "id": 3,
-    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80",
-    "schoolName": "St. Mary's Convent School, Lucknow",
-    "date": "2025-01-10",
-    "caption": "Introduction to AI ethics — students debate real-world scenarios involving artificial intelligence bias."
+    "image": "/gallery/session-3.jpg",
+    "schoolName": "NIELIT Muzaffarpur, Daudpur",
+    "date": "2026-09-01",
+    "caption": "Students attentively engaged during the PMKVY-supported AI & Python training session."
   },
   {
     "id": 4,
-    "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80",
-    "schoolName": "Amity International School, Noida",
-    "date": "2025-01-22",
-    "caption": "Collaborative project session: teams design an AI-powered solution for a local community problem."
+    "image": "/gallery/session-4.jpg",
+    "schoolName": "NIELIT Brahmapura, Muzaffarpur",
+    "date": "2026-09-09",
+    "caption": "Group photo with students and faculty after a successful workshop at the Brahmapura centre."
   },
   {
     "id": 5,
-    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80",
-    "schoolName": "Lotus Valley International School",
-    "date": "2025-02-07",
-    "caption": "Students present their capstone AI projects to school faculty at the end of the semester program."
-  },
-  {
-    "id": 6,
-    "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
-    "schoolName": "Jankidevi Public School, Mumbai",
-    "date": "2025-02-20",
-    "caption": "Hands-on computer vision workshop — students train a model to identify objects in real time."
-  },
-  {
-    "id": 7,
-    "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
-    "schoolName": "Springdales School, New Delhi",
-    "date": "2025-03-05",
-    "caption": "Free introductory workshop at Springdales — over 120 students participate in a one-day AI immersion."
-  },
-  {
-    "id": 8,
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80",
-    "schoolName": "Billabong High International, Pune",
-    "date": "2025-03-18",
-    "caption": "Natural Language Processing module: students build a simple chatbot using no-code AI tools."
+    "image": "/gallery/session-5.jpg",
+    "schoolName": "NIELIT Muzaffarpur",
+    "date": "2026-09-01",
+    "caption": "Focused classroom session — instructor discussing Computer Vision concepts with students."
   }
 ]

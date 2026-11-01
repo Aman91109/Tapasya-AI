@@ -176,7 +176,7 @@ export default function Gallery() {
           <motion.div
             className="flex gap-5 w-max py-4"
             animate={{ x: ['0%', '-50%'] }}
-            transition={{ ease: 'linear', duration: 32, repeat: Infinity }}
+            transition={{ ease: 'linear', duration: 60, repeat: Infinity }}
           >
             {Array(8).fill(filtered).flat().map((session, idx) => (
               <article
